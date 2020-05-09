@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Kodilla {
+   public static void main (String[] args) {
+       int sumaA = 1000;
+       int sumaB = 0;
+      
+    
+        Random randomGenerator = new Random();
+       
+        while(sumaA>sumaB){
+           
+        sumaA = sumaA + randomGenerator.nextInt(9);
+        sumaB = sumaB + randomGenerator.nextInt(49);
+        
+        System.out.println("Actual value of sumaA = " + sumaA);
+        System.out.println("Actual value of sumaB = " + sumaB);
+          
+       }
+   }
+}

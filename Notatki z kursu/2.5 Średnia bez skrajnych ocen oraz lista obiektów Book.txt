@@ -1,0 +1,74 @@
+import java.util.*;
+
+class ArrayListProgram 
+{
+    public static void main(String[]args) {
+        
+        
+        List<Integer> itRatings = new ArrayList<Integer>();
+        itRatings.add(4);
+        itRatings.add(2);
+        itRatings.add(2);
+        itRatings.add(6);
+        itRatings.add(4);
+        itRatings.add(4);
+        itRatings.add(1);
+        itRatings.add(5);
+        itRatings.add(3);
+       
+        double average = 0;
+       
+        double sum = 0;
+       
+        int minimum = itRatings.get(0);
+        int maximum = itRatings.get(0);
+       
+        for(int n=0; n < itRatings.size(); n++) {
+       
+            int value = itRatings.get(n);
+       
+            if(value < minimum) {
+                minimum = value;
+            }
+       
+            if(value > maximum) {
+                maximum = value;
+            }
+       
+            sum += itRatings.get(n);
+            System.out.println("[" + n + "] = " + itRatings.get(n));
+        }
+       
+        sum = sum - maximum - minimum;
+        average = sum/(itRatings.size()-2);
+        
+        System.out.println(minimum);
+        System.out.println(maximum);
+        System.out.println(sum);
+    
+        
+        System.out.println("Average of these ratings after deleting first and last one is: " + average);
+        
+        
+        
+        System.out.println("Switching to the next list");
+        
+
+        
+        List<String> books = new LinkedList<String>();
+        books.add(0, "Wladca pierscieni, 1958");
+        books.add(1, "Turbulencja, 2020");
+        books.add(2, "Hobbit, czyli tam i z powrotem, 1937");
+        books.add(3, "Latarnik, 2013");
+        books.add(4, "Park Jurajski, 1990");
+        
+        System.out.println("Program is removing books after year 2000");
+        books.remove(3);
+        books.remove(1);
+            for(String booksAfter2000: books) {
+            System.out.println(booksAfter2000);
+            }
+    
+    }
+    
+}

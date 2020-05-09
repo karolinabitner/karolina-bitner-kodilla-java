@@ -1,0 +1,86 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Student{
+    
+	private String firstName;
+	private String lastName;
+
+	public Student(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	@Override
+	public boolean equals(Object o){
+        final Student e = (Student) o;
+		return	this.firstName.equals(e.firstName) && this.lastName.equals(e.lastName);
+	}
+	
+	public String toString(){
+		return firstName + " " + lastName;
+	}
+}
+
+class Grades{
+    
+    double homework;
+    double test;
+    double quiz;
+    double homework2;
+    double homework3;
+    
+    public Grades(double homework, double test, double quiz, double homework2, double homework3){
+        this.homework = homework;
+        this.test = test;
+        this.quiz = quiz;
+        this.homework2 = homework2;
+        this.homework3 = homework3;
+    }
+    
+    public String toString(){
+    	return homework + ", " + test + ", " + quiz + ", " + homework2 + ", " + homework3 + " ";
+    }
+    
+}
+
+class HashMapStudentsGrades
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    List<Student> studentList = new ArrayList<>();
+    		Student student1 = new Student("Jennifer", "Taylor");
+    		Student student2 = new Student("Monica", "Kowalski");
+    		Student student3 = new Student("Robert", "Greenfield");
+    		Student student4 = new Student("Anna", "Greenfield");
+    		
+    		studentList.add(student1);
+    		studentList.add(student2);
+    		studentList.add(student3);
+            studentList.add(student4);
+            
+        List<Grades> studentGrades = new ArrayList<>();
+    		Grades gradesstudent1 = new Grades(5.0, 3.0, 1.0, 2.0, 4.0);
+    		Grades gradesstudent2 = new Grades(4.0, 2.0, 1.0, 3.0, 2.0);
+    		Grades gradesstudent3 = new Grades(4.0, 5.0, 3.0, 1.0, 1.0);
+    		Grades gradesstudent4 = new Grades(1.0, 2.0, 3.0, 2.0, 3.0);
+		
+    		studentGrades.add(gradesstudent1);
+    		studentGrades.add(gradesstudent2);
+    		studentGrades.add(gradesstudent3);
+    		studentGrades.add(gradesstudent4);
+
+		HashMap<Student, Grades> grades = new HashMap<Student, Grades>();
+
+    		grades.put(student1, gradesstudent1);
+    		grades.put(student2, gradesstudent2);
+    		grades.put(student3, gradesstudent3);
+    		grades.put(student4, gradesstudent4);
+		
+		for(int i = 0; i < studentGrades.size(); i++){
+        double avgStudent = 0;
+		    avgStudent = (studentGrades.get(i).homework + studentGrades.get(i).test + studentGrades.get(i).quiz + studentGrades.get(i).homework2 + studentGrades.get(i).homework3) /5;
+            System.out.println(studentList.get(i) + "\n"+ studentGrades.get(i) + "\navg: " + avgStudent + "\n");
+		}
+	}
+}

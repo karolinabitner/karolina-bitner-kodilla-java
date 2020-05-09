@@ -1,0 +1,68 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.time.*;
+
+
+class Book{
+   
+   String title;
+   String author;
+   LocalDate year;
+   
+   public Book (String title, String author, int yearOfBook, 
+                    int monthOfBook, int dayOfBook){
+        this.title = title;
+        this.author = author;
+        this.year = LocalDate.of(yearOfBook, monthOfBook, dayOfBook);
+       }
+    
+    public int hashCode(){
+        return year.getYear() * 100 + year.getMonthValue();
+    }
+    
+    public boolean equals(Object o){
+        Book e = (Book) o;
+        return this.title.equals(e.title) && this.author.equals(e.author) && this.year.equals(e.year);
+    }
+    
+    public String toString(){
+    	return "Książkę " + title + " napisał " + author + " w  " + year + " roku.";
+    }
+    
+     public String getTitle(){
+    	return title;
+    }
+    public String getAuthor(){
+        return author;   
+    }
+    
+    public LocalDate getYear(){
+        return year;   
+    }
+}
+
+class HashSetclass{
+ 
+    public static void main (String[] args) throws java.lang.Exception {
+        
+        Book book1 = new Book("W pustyni i w puszczy","Henryk Sienkiewicz",1994, 12, 3);
+        Book book2 = new Book("Finansowy Ninja", "Michał Szafrański", 2018, 6, 30);
+        Book book3 = new Book("Rozum i godność człowieka", "Krzysztof Gonciarz", 2019, 10, 5);
+        Book book4 = new Book("Archistorie", "Radosław Gajda", 2019, 8, 5);
+        
+        
+        HashSet<Book> booksSet = new HashSet<Book>();
+		booksSet.add(book1);
+		booksSet.add(book2);
+		booksSet.add(book3);
+		booksSet.add(book4);
+		
+		
+    for(Book book: booksSet){
+			if(book.getYear().getYear() <= 2000){
+			    System.out.println(book);
+			}
+    }
+    }
+}

@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Wrappery 
+{
+    public static void main(String[]args) {
+        int n = 100;
+        Integer k = n;
+        int q = k;  
+
+        if (n == k) {
+            System.out.println("true, int == Integer");   
+        }
+
+        boolean m = true;
+        Boolean l = m;
+        boolean i = l;
+
+        if (m == l) {
+             System.out.println("true, boolean == Boolean");   
+        }
+
+        char c = 'a';
+        Character p = c;
+        char b = p;
+
+        if (c == p) {
+            System.out.println("true, char == Character");   
+        }
+    }
+}

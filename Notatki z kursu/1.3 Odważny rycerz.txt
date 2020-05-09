@@ -1,0 +1,39 @@
+interface Quest {
+    void process();
+}
+ 
+class DeadIslandQuest implements Quest{
+    public void process() {
+    System.out.println("Tekst pierwszy");  
+    }
+}
+ 
+class EliteKnightQuest implements Quest{
+    public void process() {
+    System.out.println("Zakończenie zadania wraz z jego nazwą");  
+    }
+}
+ 
+class Knight {
+ private Quest quest;
+   
+    public Knight(Quest quest) {
+        this.quest = quest;
+    }
+   
+    public void goOnQuest() {
+        this.quest.process();
+    }
+   
+}
+ 
+class Application {
+     public static void main (String[] args) {
+       
+       Knight knight1 = new Knight(new EliteKnightQuest());
+       knight1.goOnQuest();
+       
+       Knight knight2 = new Knight(new DeadIslandQuest());
+       knight2.goOnQuest();
+   }
+}

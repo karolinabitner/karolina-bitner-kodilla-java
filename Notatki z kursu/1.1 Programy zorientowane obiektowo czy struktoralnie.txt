@@ -1,0 +1,38 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class User 
+{
+  
+    String name;
+    double age;
+    int height;
+    
+    void validate() {
+        if(name != null) {
+			if(age > 30 && height > 160) {
+				System.out.println("User is older than 30 and higher then 160cm");
+			} else {
+				System.out.println("User is younger than 30 or lower than 160cm");
+			}
+        }
+   }
+}
+
+
+
+class Application
+{
+    public static void main (String[] args) {
+    
+    User Adam = new User();
+    Adam.name = "Adam";
+    Adam.age = 40.5;
+    Adam.height = 178;
+    
+    Adam.validate();
+          
+    }
+}
+        

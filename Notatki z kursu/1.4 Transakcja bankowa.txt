@@ -1,0 +1,71 @@
+abstract class Bank {
+ 
+	abstract protected void insertCard();
+ 
+	abstract protected void pin();
+	
+	abstract protected void amount();
+ 
+	private void receivingInformation() {
+		System.out.println("Receiving information!");
+	}
+ 
+	private void balance() {
+		System.out.println("Checking balance.");
+	}
+	
+ 	private void accept() {
+		System.out.println("Acceptation.");
+	}
+	
+	abstract protected void withdraw();
+	
+	abstract protected void lastMessage();
+	
+}
+ 
+class Cashmachine extends Bank {
+    
+    public void run() {
+		this.insertCard();
+		this.pin();
+		this.amount();
+		this.withdraw();
+		this.lastMessage();
+	}
+ 
+	protected void insertCard() {
+		System.out.println("Please, insert your card.");
+	}
+ 
+	protected void pin() {
+		System.out.println("Please, enter your Pin number.");
+	}
+	
+	protected void amount() {
+		System.out.println("Select amount.");
+	}
+	
+	protected void withdraw() {
+	 System.out.println("Cash withdrawal.");   
+
+	}
+	
+
+	
+	protected void lastMessage() {
+	 System.out.println("Thank you for using our bank's services.");   
+	}
+}
+
+class Application {
+	
+	public static void main(String args[]) {
+		
+		Cashmachine runner = new Cashmachine();
+		
+		runner.run();
+		
+	}
+	
+}

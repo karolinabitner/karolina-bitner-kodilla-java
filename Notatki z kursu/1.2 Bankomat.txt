@@ -1,0 +1,48 @@
+interface ATM {
+ 
+    void connect(String name);
+ 
+    default void payment() {
+ 
+        System.out.println("payment");
+ 
+    }
+   
+    default void withdrawal() {
+ 
+        System.out.println("withdrawal");
+ 
+    }
+   
+    static String disconnectr() {
+        return "Połączenie z bankiem zostało zakończone";
+    }
+ 
+}
+ 
+class EuronetATM implements ATM {
+ 
+    public void connect(String name) {
+        System.out.println("Łączenie z bankiem... " + name);
+    }
+   
+    public void payment() {
+        System.out.println("Euronet payment starting...");  
+    }
+   
+ 
+}
+ 
+ 
+class Application
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        EuronetATM euronet = new EuronetATM();
+        euronet.connect("ING");
+        euronet.payment();
+        euronet.withdrawal();
+       
+        System.out.println(ATM.disconnectr());
+    }
+}
