@@ -1,0 +1,63 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class LetteringA {
+
+    public static void main(String[] args) throws java.lang.Exception {
+
+        String letterA = "a";
+
+        ArrayDeque < String > quantityA = new ArrayDeque < String > ();
+        Random theGenerator = new Random();
+
+
+        for (int i = 0; i < 50; i++) {
+            int x = theGenerator.nextInt(50) + 1;
+            String text = "";
+            for (int y = 0; y < x; y++) {
+                text += letterA;
+            }
+            quantityA.add(text);
+        }
+        System.out.println(quantityA);
+
+        ArrayDequeSpliter spliter = new ArrayDequeSpliter();
+        spliter.distributor(quantityA);
+        System.out.println("odd :");
+        System.out.println(spliter.getOdd());
+        System.out.println("even :");
+        System.out.println(spliter.getEven());
+    }
+}
+
+class ArrayDequeSpliter {
+
+    ArrayList < String > odd = new ArrayList < String > ();
+
+    ArrayList < String > even = new ArrayList < String > ();
+
+    public void distributor(ArrayDeque < String > deque) {
+        for (int n = 0; n < deque.size(); n++) {
+            String divisibilityLetter = deque.poll();
+
+            if (divisibilityLetter.length() % 2 == 0) {
+                even.add(divisibilityLetter);
+
+            } else {
+                odd.add(divisibilityLetter);
+            }
+
+
+        }
+
+    }
+
+    public List < String > getOdd() {
+        return odd;
+    }
+    public List < String > getEven() {
+        return even;
+    }
+}

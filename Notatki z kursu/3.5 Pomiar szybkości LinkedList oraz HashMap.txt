@@ -1,0 +1,138 @@
+import java.util. * ;
+import java.lang. * ;
+import java.io. * ;
+
+class Reader
+{
+    String name;
+    
+    public Reader(String name)
+    {
+        this.name = name;
+    }
+    
+    @Override
+    public boolean equals(Object ob)
+    {
+        Reader r = (Reader) ob;
+        return(name.equals(r.getName()));
+        
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(name);
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+}
+
+class Book {
+
+	String title;
+	String author;
+
+	public Book(String title, String author) {
+		this.title = title;
+		this.author = author;
+	}
+
+	public boolean equals(Object j) {
+		Book book = (Book) j;
+		return (title.equals(book.title)) && (author.equals(book.author));
+	}
+	public int hashCode() {
+		return Objects.hash(this.title, this.author);
+	}
+	public String getTitle() {
+		return title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+}
+
+class Program {
+
+	public static void main(String[] args) throws java.lang.Exception {
+		LinkedList < Book > exampleList = new LinkedList < Book > ();
+		Book firstBook = null;
+		Book lastBook = null;
+
+		for (int n = 0; n < 80000; n++) {
+			Book book = new Book("title" + n, "author" + n);
+			exampleList.add(book);
+			if (n == 0) {
+				firstBook = book;
+			}
+			if (n == exampleList.size()); {
+				lastBook = book;
+			}
+		}
+
+		System.out.println("Quantity of books in collection: " + exampleList.size());
+
+		//kasuje na początku
+		long begin = System.nanoTime();
+		exampleList.remove(firstBook);
+		long end = System.nanoTime();
+		System.out.println("Removing first element has taken: " + (end - begin) + " ns");
+		//kasuje na końcu
+		begin = System.nanoTime();
+		exampleList.remove(lastBook);
+		end = System.nanoTime();
+		System.out.println("Removing last element has taken: " + (end - begin) + " ns");
+		//wstawiam na poczatku
+		begin = System.nanoTime();
+		exampleList.add(firstBook);
+		end = System.nanoTime();
+		System.out.println("Adding first element has taken: " + (end - begin) + " ns");
+		//wstawiam na końcu
+		begin = System.nanoTime();
+		exampleList.add(lastBook);
+		end = System.nanoTime();
+		System.out.println("Adding last element has taken: " + (end - begin) + " ns");
+		
+		HashMap<Book, Reader> bookMap = new HashMap<>();
+        
+        for(int n = 0; n < 800000; n++) 
+        {
+            bookMap.put(new Book("title" + n, "author" + n), new Reader("index" + n));
+        }
+       
+        System.out.println("Quantity of books in collection: " + bookMap.size());
+        
+        
+        Book myBook = new Book("title15987", "author15987");
+        
+        begin = System.nanoTime();
+        bookMap.get(myBook);
+        end = System.nanoTime();
+        
+        System.out.println("Finding item has taken: " + (end-begin) + " ns");
+
+        
+        Book superBook = new Book("Lalka", "Bolesław Prus");
+        Reader reader = new Reader ("Jan Kowalski");
+        
+        begin = System.nanoTime();
+        bookMap.put(superBook, reader);
+        end = System.nanoTime();
+        
+        System.out.println("Adding element has taken: " + (end-begin) + " ns");
+        
+        
+        begin = System.nanoTime();
+        bookMap.remove(superBook);
+        end = System.nanoTime();
+        
+        System.out.println("Removing element has taken: " + (end-begin) + " ns");
+        
+        
+	}
+}
