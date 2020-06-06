@@ -18,6 +18,8 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testCompile('junit:junit:4.13')
+    //Test dependencies
+    testCompile('junit:junit:4.12')
 }
 
 test {
