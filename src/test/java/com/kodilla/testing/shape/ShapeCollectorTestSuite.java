@@ -1,44 +1,80 @@
 package com.kodilla.testing.shape;
 
-import org.junit.Test;
+import org.junit.*;
 import testing.shape.Shape;
 import testing.shape.ShapeCollector;
 import testing.shape.Square;
 
 public class ShapeCollectorTestSuite {
-    @Test
-    public void testAddFigure(){
-        //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square();
-        //When
-        shapeCollector.addFigure(shape);
-        //Then
-        assertEquals(1, shapeCollector.getShapeCollection().size());
+    private static int testCounter = 0;
+
+    @BeforeClass
+    public static void beforeAllTests() {
+        System.out.println("This is the beginning of tests.");
+    }
+
+    @AfterClass
+    public static void afterAllTests() {
+        System.out.println("All tests are finished.");
+    }
+
+    @Before
+    public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
     }
     @Test
-    public void testRemoveFigure(){
+    public void testAddFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square();
-        shapeCollector.addFigure(shape);
+
         //When
-        boolean result = shapeCollector.removeFigure(shape);
+        shapeCollector.addFigure(new Circle(1));
+
         //Then
-        assertTrue(result);
-        assertEquals(0, shapeCollector.getShapeCollection().size());
+        int size = shapeCollector.getFigureSize();
+        Assert.assertEquals(1, size);
     }
     @Test
-    public void testShowFigures(){
+    public void testRemoveFigure() {
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(4);
-        shapeCollector.addFigure(shape);
-        ArrayList<Shape> shapeList= new ArrayList<>();
-        shapeList.add(shape);
+        Circle circle = new Circle(1);
+        shapeCollector.addFigure(circle);
+
         //When
-        List<Shape> shapeResultList = shapeCollector.getShapeCollection();
+        boolean result = shapeCollector.removeFigure(circle);
+
         //Then
-        assertEquals(shapeList.toString(), shapeResultList.toString());
+        int size = shapeCollector.getFigureSize();
+        Assert.assertEquals(0, size);
+    }
+    @Test
+    public void testGetFigure() {
+        //Given
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(new Circle(1));
+        Square square = new Square(2);
+        shapeCollector.addFigure(square);
+        shapeCollector.addFigure(new Triangle(2,3));
+
+        //When
+        Shape result = shapeCollector.getFigure(1);
+
+        //Then
+        Assert.assertEquals(square, result);
+    }
+    @Test
+    public void testShowFigures() {
+        //Given
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(new Triangle(2,3));
+        shapeCollector.addFigure(new Triangle(3,4));
+
+        //When
+        String wynik = shapeCollector.showFigures();
+
+        //Then
+        Assert.assertEquals("TriangleTriangle", wynik);
     }
 }

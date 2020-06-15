@@ -6,7 +6,10 @@ import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 import com.kodilla.stream.person.People;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamMain {
@@ -43,14 +46,15 @@ public class StreamMain {
                 //.filter(s -> s.substring(0, 1).equals("M"))
                 //.forEach(System.out::println);
 
-        Forum theForumList = new Forum();
-        theForumList.getUserList().stream()
+        Forum forum = new Forum();
+        Map<Integer, ForumUser> theForumList = forum.getUserList().stream()
                 .filter(forumUser -> forumUser.getSex() == 'M')
-                .filter(forumUser -> forumUser.getDateOfBirth().)
+                .filter(u -> Period.between(u.getDateOfBirth(), LocalDate.now()).getYears() >= 20)
                 .filter(forumUser -> forumUser.getPostQuantity() > 1)
                 .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser));
 
-        theForumList.stream()
+        theForumList.entrySet().stream()
+                .map(entry -> entry.getKey() + " : " + entry.getValue())
                 .forEach(System.out::println);
     }
 }

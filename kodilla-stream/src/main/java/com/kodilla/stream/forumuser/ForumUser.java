@@ -7,7 +7,7 @@ public class ForumUser {
     private String name;
     private char sex;
     private LocalDate dateOfBirth;
-    private int postQuantity
+    private int postQuantity;
 
     public ForumUser(int id, String name, char sex, LocalDate dateOfBirth, int postQuantity) {
         this.id = id;
