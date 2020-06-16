@@ -1,7 +1,6 @@
 package com.kodilla.testing.collection;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class CollectionTestSuite {
         resultNormalList.add(2);
         resultNormalList.add(4);
         //When
-        ArrayList<Integer> resultList = oddNumbersExterminator.exterminate.(normalList);
+        ArrayList<Integer> resultList = oddNumbersExterminator.exterminate(normalList);
         System.out.println("Test - normal list.");
         //Then
         Assert.assertEquals(resultNormalList, resultList);
@@ -47,7 +46,8 @@ public class CollectionTestSuite {
         //Given
         ArrayList<Integer>emptyList = new ArrayList<>();
         //When
-        ArrayList<Integer>resultEmptyList = oddNumbersExterminator.exterminate.(emptyList);
+        ArrayList<Integer>resultEmptyList;
+        resultEmptyList = oddNumbersExterminator(emptyList);
         System.out.println("Test - empty list");
         //Then
         Assert.assertEquals(emptyList, resultEmptyList);
