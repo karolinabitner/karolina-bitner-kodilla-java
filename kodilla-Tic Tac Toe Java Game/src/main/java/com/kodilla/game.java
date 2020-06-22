@@ -17,12 +17,13 @@ import java.util.List;
 
 
 public class game extends Application {
-    private Image imageback = new Image("file:resources/plansza.png");
-    private Image cross = new Image("file:resources/krzyzyk.png");
+    private Image imageback = new Image("file:resources/nowa_plansza.png");
+    private Image cross = new Image("file:resources/krzyzyk2.png");
     private Image circle = new Image("file:resources/kolko.png");
     private FlowPane crosss = new FlowPane(Orientation.HORIZONTAL);
     private List<Button> buttons = new ArrayList<>();
     private boolean isX = true;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -46,6 +47,7 @@ public class game extends Application {
 //
 //        grid.add(crosss, 0, 0, 3, 1);
 
+
         for (int i = 0; i < 9; i++){
             Button button = new Button();
             button.setOnAction(event -> {
@@ -67,8 +69,19 @@ public class game extends Application {
             grid.add(button, column, row);
             buttons.add(button);
         }
+//        if((buttons.get(0) == buttons.get(1) == buttons.get(2))){
+//            System.out.println("Winner!!");
+//        }
+//        if (buttons.equals(buttons(0)) && buttons.equals(buttons(1))) {
+//            System.out.println("Winner!!");
+//        } else {
+//            System.out.println("Coś tam!!");
+//        }
+        if (buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == 3) {
+            System.out.println("Winner");
+        }
 
-        Scene scene = new Scene(grid, 720, 714, Color.BLACK);
+        Scene scene = new Scene(grid, 680, 680, Color.BLACK);
 
         primaryStage.setTitle("Tic Tac Toe");
         primaryStage.setScene(scene);
@@ -76,4 +89,5 @@ public class game extends Application {
 
 
     }
+
 }
