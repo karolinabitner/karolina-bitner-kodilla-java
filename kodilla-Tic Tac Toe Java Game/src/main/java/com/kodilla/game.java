@@ -62,7 +62,8 @@ public class game extends Application {
             button.setPrefHeight(200);
             button.setPrefWidth(200);
             int column = i % 3;
-            int row = i % 3;
+            //reszta całkowita z dzielenia
+            int row = (int) i/3;
             grid.add(button, column, row);
             buttons.add(button);
         }
