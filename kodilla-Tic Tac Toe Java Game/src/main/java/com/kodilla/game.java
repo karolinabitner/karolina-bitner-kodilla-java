@@ -59,6 +59,11 @@ public class game extends Application {
                     isX=true;
                 }
                 System.out.println("Kliknięto");
+
+                checkWinner();{
+
+                }
+
             });
             button.setBackground(null);
             button.setPrefHeight(200);
@@ -77,9 +82,9 @@ public class game extends Application {
 //        } else {
 //            System.out.println("Coś tam!!");
 //        }
-        if (buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == 3) {
-            System.out.println("Winner");
-        }
+//        if (buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == 3) {
+//            System.out.println("Winner");
+//        }
 
         Scene scene = new Scene(grid, 680, 680, Color.BLACK);
 
@@ -89,5 +94,33 @@ public class game extends Application {
 
 
     }
+    public void checkWinner(){
+        int crossCount = 0;
+        int circleCount = 0;
 
+        for(int n=0; n<9; n++){
+            Button button = buttons.get(n);
+            //rzutuje typ imageViev na image
+            if (button.getGraphic() == null){
+                continue;
+            }
+            Image buttonImage = ((ImageView) button.getGraphic()).getImage();
+            if (cross.equals(buttonImage)){
+                crossCount ++;
+            }
+            if (circle.equals(buttonImage)){
+                circleCount ++;
+            }
+            if(n % 3 == 0 && n != 0){
+                if (crossCount == 3){
+                    System.out.println("Wygrał krzyżyk");
+                }
+                if(circleCount == 3){
+                    System.out.println("Wygrało kółko");
+                }
+                crossCount = 0;
+                circleCount = 0;
+            }
+        }
+    }
 }
